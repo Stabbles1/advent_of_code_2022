@@ -6,13 +6,19 @@ fn main() {
 
     let contents = contents.split("\n");
 
-    let mut highest_total: i32 = 0;
+    let mut highest_totals: [i32; 3] = [0, 0, 0];
+    let mut minimum_highest = 0;
     let mut current_total = 0;
     for calorie in contents {
         if calorie.eq("") {
-            match current_total.cmp(&highest_total) {
+            minimum_highest = highest_totals.iter().min();
+            match current_total.cmp(minimum_highest) {
                 cmp::Ordering::Greater => {
-                    highest_total = current_total;
+                    let mut minimum_position = highest_totals
+                        .iter()
+                        .position(|&x| x == minimum_highest)
+                        .unwrap();
+                    //highest_total = current_total;
                 }
                 cmp::Ordering::Less => {}
                 cmp::Ordering::Equal => {}
@@ -23,5 +29,5 @@ fn main() {
             current_total = current_total + calorie;
         }
     }
-    println!("{highest_total}");
+    //println!("{highest_total}");
 }
