@@ -1,6 +1,6 @@
 import string
 
-scores = {
+SCORES = {
     letter: value + 1
     for value, letter in enumerate(string.ascii_lowercase + string.ascii_uppercase)
 }
@@ -20,7 +20,7 @@ def main(input):
         compartment_1 = backpack[0 : int(len(backpack) / 2)]
         compartment_2 = backpack[int(len(backpack) / 2) :]
         misplaced_item = find_misplaced_item(compartment_1, compartment_2)
-        priority_sum += scores[misplaced_item]
+        priority_sum += SCORES[misplaced_item]
     return priority_sum
 
 
