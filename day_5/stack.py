@@ -2,8 +2,9 @@ class Stack:
     def __init__(self):
         self.crates = []
 
-    def add_crates_to_top(self, letters: list[str]):
-        letters.reverse()
+    def add_crates_to_top(self, letters: list[str], CrateMover_version=9000):
+        if CrateMover_version <= 9000:
+            letters.reverse()
         self.crates += letters
 
     def remove_crates_from_top(self, quantity):
